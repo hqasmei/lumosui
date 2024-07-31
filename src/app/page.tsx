@@ -27,7 +27,7 @@ export default function LandingPage() {
         <div className="space-y-4">
           {components.map((component, idx) => (
             <Link key={idx} href={component.path} className="block w-full">
-              <div className="group relative rounded-lg overflow-hidden bg-accent hover:shadow-lg transition-all duration-300 ease-in-out pt-4 px-4  pb-8">
+              <div className="group relative rounded-lg overflow-hidden bg-accent/50 hover:shadow-lg transition-all duration-300 ease-in-out pt-4 px-4  pb-8">
                 <div className="flex flex-col">
                   <div className="mb-4">
                     <span className="font-medium text-foreground text-lg">

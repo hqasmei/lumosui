@@ -28,12 +28,12 @@ export default function SearchBarWithButton({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
+          className="w-full px-4 py-2 rounded-l-md border border-accent focus:outline-none"
         />
       </div>
       <button
         type="submit"
-        className="px-4 py-2.5 bg-gray-100 border border-gray-300 border-l-0 rounded-r-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2"
+        className="px-4 py-2.5 bg-accent border border-accent border-l-0 rounded-r-md focus:outline-none hover:bg-accent/80"
       >
         <Search size={20} className="text-gray-500" />
       </button>

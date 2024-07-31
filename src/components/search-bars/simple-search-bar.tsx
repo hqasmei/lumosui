@@ -24,7 +24,7 @@ export default function SimpleSearchBar({
     <form onSubmit={handleSubmit} className="flex items-center">
       <div className="relative">
         <Search
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+          className="absolute left-3 top-1/2 transform -translate-y-1/2"
           size={18}
         />
         <input
@@ -32,7 +32,7 @@ export default function SimpleSearchBar({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder={placeholder}
-          className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
+          className="pl-10 pr-4 py-2 w-64 border border-accent rounded-full focus:outline-none"
         />
       </div>
     </form>

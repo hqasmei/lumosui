@@ -40,45 +40,45 @@ export const cardComponents: ComponentConfig[] = [
       bottomMainText: 'Contra Studios',
     },
   },
-  {
-    Component: GlassCard,
-    props: {
-      title: 'Glass Card',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      buttonText: 'Learn more',
-    },
-  },
+  // {
+  //   Component: GlassCard,
+  //   props: {
+  //     title: 'Glass Card',
+  //     subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  //     buttonText: 'Learn more',
+  //   },
+  // },
 
-  {
-    Component: ProfileCard,
-    props: {
-      name: 'John Doe',
-      role: 'Software Engineer',
-      avatarUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
-      bio: 'Passionate about creating intuitive user interfaces and solving complex problems.',
-    },
-  },
-  {
-    Component: EventCard,
-    props: {
-      title: 'Tech Conference 2024',
-      date: 'August 15-17, 2024',
-      location: 'San Francisco, CA',
-      description: 'Join us for the biggest tech event of the year!',
-      imageUrl:
-        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    },
-  },
-  {
-    Component: PricingCard,
-    props: {
-      planName: 'Pro',
-      price: '$49',
-      period: 'per month',
-      features: ['Feature 1', 'Feature 2', 'Feature 3'],
-      ctaText: 'Get Started',
-    },
-  },
+  // {
+  //   Component: ProfileCard,
+  //   props: {
+  //     name: 'John Doe',
+  //     role: 'Software Engineer',
+  //     avatarUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
+  //     bio: 'Passionate about creating intuitive user interfaces and solving complex problems.',
+  //   },
+  // },
+  // {
+  //   Component: EventCard,
+  //   props: {
+  //     title: 'Tech Conference 2024',
+  //     date: 'August 15-17, 2024',
+  //     location: 'San Francisco, CA',
+  //     description: 'Join us for the biggest tech event of the year!',
+  //     imageUrl:
+  //       'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //   },
+  // },
+  // {
+  //   Component: PricingCard,
+  //   props: {
+  //     planName: 'Pro',
+  //     price: '$49',
+  //     period: 'per month',
+  //     features: ['Feature 1', 'Feature 2', 'Feature 3'],
+  //     ctaText: 'Get Started',
+  //   },
+  // },
 ];
 
 export const searchBars: ComponentConfig[] = [
@@ -145,12 +145,12 @@ export const components = [
     items: searchBars,
     columns: 2,
   },
-  {
-    title: 'Hero Sections',
-    description:
-      'A collection of beautiful and functional hero sections for your next project.',
-    path: '/hero-sections',
-    items: heroComponents,
-    columns: 1,
-  },
+  // {
+  //   title: 'Hero Sections',
+  //   description:
+  //     'A collection of beautiful and functional hero sections for your next project.',
+  //   path: '/hero-sections',
+  //   items: heroComponents,
+  //   columns: 1,
+  // },
 ];
