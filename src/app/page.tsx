@@ -1,25 +1,53 @@
+import { createElement } from 'react';
+
 import Link from 'next/link';
 
+import MainNav from '@/components/main-nav';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { components } from '@/config/components';
+import { siteConfig } from '@/config/site';
 
 export default function LandingPage() {
   return (
-    <MaxWidthWrapper >
-      <h1>Components</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-        {components.map((component, idx) => {
-          return (
-            <Link
-              key={idx}
-              href={component.path}
-              className="border border-accent dark:hover:border-muted-foreground rounded-md p-4 text-center shadow hover:shadow-lg transition-all duration-300 ease-in-out"
-            >
-              <span className="font-medium text-xl">{component.title}</span>
-            </Link>
-          );
-        })}
+    <MaxWidthWrapper className="space-y-12">
+      {/* Hero Section */}
+      <div className="relative rounded-lg overflow-hidden">
+        <div className="h-[400px]" />
+        <div className="absolute inset-0 flex flex-col items-center text-center justify-center bg-accent">
+          <span className="text-5xl font-bold mb-4 ">{siteConfig.name}</span>
+          <p className="text-xl mb-6 text-balance text-muted-foreground">
+            {siteConfig.description}
+          </p>
+        </div>
       </div>
+
+      {/* Featured Components Section */}
+      <section className='pb-10'>
+        <h2 className="text-2xl font-bold mb-6">Categories</h2>
+        <div className="space-y-4">
+          {components.map((component, idx) => (
+            <Link key={idx} href={component.path} className="block w-full">
+              <div className="group relative rounded-lg overflow-hidden bg-accent hover:shadow-lg transition-all duration-300 ease-in-out pt-4 px-4  pb-8">
+                <div className="flex flex-col">
+                  <div className="mb-4">
+                    <span className="font-medium text-foreground text-lg">
+                      {component.title}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    {createElement(
+                      component.items[0].Component,
+                      component.items[0].props,
+                    )}
+                  </div>
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </MaxWidthWrapper>
   );
 }

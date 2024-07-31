@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { ComponentConfig, components } from '@/config/components';
+import { cn } from '@/lib/utils';
 
 type CategoryPageProps = {
   params: { category: string };
@@ -18,16 +19,34 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   }
 
   return (
-    <MaxWidthWrapper>
-      <h1>{componentData.title}</h1>
-      <div className="grid grid-cols-1 gap-4 mt-4">
+    <MaxWidthWrapper className="py-8">
+      <div className="flex flex-col items-center justify-center text-center gap-2">
+        <h1 className="text-2xl md:text-4xl font-bold">
+          {componentData.title}
+        </h1>
+        <p className="text-lg text-muted-foreground text-balance">
+          {componentData.description}
+        </p>
+      </div>
+
+      <div
+        className={cn(
+          'flex gap-4 mt-4',
+          componentData.columns === 1 ? 'flex-col' : ' flex-wrap',
+        )}
+      >
         {componentData.items.map(
           (itemConfig: ComponentConfig, index: number) => {
             const ItemComponent = itemConfig.Component;
             return (
               <div
                 key={index}
-                className="flex flex-col rounded-md gap-4 bg-accent/50 p-4 items-center justify-center"
+                className={cn(
+                  componentData.columns === 1
+                    ? 'w-full'
+                    : 'w-full sm:w-[calc(50%-0.5rem)]',
+                  'flex-grow flex flex-col rounded-md gap-4 bg-accent/50 p-10 items-center justify-center border border-muted-foreground/10',
+                )}
               >
                 <ItemComponent {...itemConfig.props} />
               </div>
@@ -37,10 +56,4 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       </div>
     </MaxWidthWrapper>
   );
-}
-
-export async function generateStaticParams() {
-  return components.map((component) => ({
-    category: component.path.slice(1), // Remove leading slash
-  }));
 }

@@ -7,7 +7,7 @@ export const siteConfig = {
   links: {
     twitter: 'https://twitter.com/hqasmei',
     discord: 'https://discord.gg/87p2vpsat5',
-    github: 'https://github.com/magicuidesign/magicui', 
+    github: 'https://github.com/hqasmei/lumosui',
   },
   keywords: [
     'React',

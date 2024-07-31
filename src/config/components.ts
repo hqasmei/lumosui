@@ -1,11 +1,15 @@
+import ArticleCard from '@/components/cards/article-card';
 import EventCard from '@/components/cards/event-card';
 import GlassCard from '@/components/cards/glass-card';
 import ImageCard from '@/components/cards/image-card';
 import PricingCard from '@/components/cards/pricing-card';
 import ProfileCard from '@/components/cards/profile-card';
 import BasicHeroSection from '@/components/heros/basic-hero-section';
-import AdvancedSearchBar from '@/components/search-bars/advanced-search-bar';
+import HeroGradient from '@/components/heros/hero-gradient';
 import BasicSearchBar from '@/components/search-bars/basic-search-bar';
+import ResponsiveSearchBar from '@/components/search-bars/responsive-search-bar';
+import SimpleSearchBar from '@/components/search-bars/simple-search-bar';
+import SimpleSearchBarWithButton from '@/components/search-bars/simple-search-bar-with-button';
 
 export interface ComponentConfig {
   Component: React.ComponentType<any>;
@@ -16,11 +20,14 @@ export interface ComponentConfig {
 
 export const cardComponents: ComponentConfig[] = [
   {
-    Component: GlassCard,
+    Component: ArticleCard,
     props: {
-      title: 'Glass Card',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      buttonText: 'Learn more',
+      title: 'How to make the perfect coffee at home',
+      authorName: 'Tara Gibson',
+      date: 'Jul 13, 2019',
+      imageUrl:
+        'https://images.unsplash.com/photo-1521401292936-0a2129a30b1c?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      authorImageUrl: 'https://randomuser.me/api/portraits/women/2.jpg',
     },
   },
   {
@@ -33,6 +40,15 @@ export const cardComponents: ComponentConfig[] = [
       bottomMainText: 'Contra Studios',
     },
   },
+  {
+    Component: GlassCard,
+    props: {
+      title: 'Glass Card',
+      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      buttonText: 'Learn more',
+    },
+  },
+
   {
     Component: ProfileCard,
     props: {
@@ -67,16 +83,28 @@ export const cardComponents: ComponentConfig[] = [
 
 export const searchBars: ComponentConfig[] = [
   {
-    Component: BasicSearchBar,
+    Component: SimpleSearchBar,
     props: {
-      placeholder: 'Search for a venue',
+      placeholder: 'Search...',
     },
   },
   {
-    Component: AdvancedSearchBar,
+    Component: BasicSearchBar,
     props: {
-      placeholder: 'Search events',
-      filters: ['Date', 'Location', 'Category'],
+      placeholder: 'Search...',
+    },
+  },
+  {
+    Component: ResponsiveSearchBar,
+    props: {
+      placeholder: 'Search...',
+    },
+  },
+
+  {
+    Component: SimpleSearchBarWithButton,
+    props: {
+      placeholder: 'Search...',
     },
   },
 ];
@@ -90,22 +118,39 @@ export const heroComponents: ComponentConfig[] = [
       buttonText: 'Learn more',
     },
   },
+  {
+    Component: HeroGradient,
+    props: {
+      title: 'Hero',
+      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      buttonText: 'Learn more',
+    },
+  },
 ];
 
 export const components = [
   {
     title: 'Cards',
+    description:
+      'A collection of beautiful and functional cards for your next project.',
     path: '/cards',
     items: cardComponents,
+    columns: 2,
   },
   {
     title: 'Search Bars',
+    description:
+      'A collection of beautiful and functional search bars for your next project.',
     path: '/search-bars',
     items: searchBars,
+    columns: 2,
   },
   {
     title: 'Hero Sections',
+    description:
+      'A collection of beautiful and functional hero sections for your next project.',
     path: '/hero-sections',
     items: heroComponents,
+    columns: 1,
   },
 ];

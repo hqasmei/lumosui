@@ -26,7 +26,11 @@ export function ThemeToggle({ isDropDown = false }: { isDropDown?: boolean }) {
       onClick={toggleTheme}
       className="p-1 w-7 h-7 rounded-md hover:bg-accent transition-colors duration-200"
     >
-      {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+      {theme === 'light' ? (
+        <Moon size={20} className="stroke-muted-foreground" />
+      ) : (
+        <Sun size={20} className="stroke-muted-foreground" />
+      )}
     </button>
   );
 }
