@@ -1,10 +1,11 @@
 import React from 'react';
 
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { ComponentConfig, components } from '@/config/components';
-import { cn } from '@/lib/utils';
+import { cn, makeIntoSlug } from '@/lib/utils';
 
 type CategoryPageProps = {
   params: { category: string };
@@ -12,8 +13,10 @@ type CategoryPageProps = {
 
 export default function CategoryPage({ params }: CategoryPageProps) {
   const category = params.category;
+
   const componentData = components.find((c) => c.path === `/${category}`);
 
+  console.log(category);
   if (!componentData) {
     notFound();
   }
@@ -38,18 +41,21 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         {componentData.items.map(
           (itemConfig: ComponentConfig, index: number) => {
             const ItemComponent = itemConfig.Component;
+            const slug = makeIntoSlug(itemConfig.name);
+
             return (
-              <div
+              <Link
                 key={index}
+                href={`${category}/${slug}`}
                 className={cn(
                   componentData.columns === 1
                     ? 'w-full'
                     : 'w-full sm:w-[calc(50%-0.5rem)]',
-                  'flex-grow flex flex-col rounded-md gap-4 bg-accent/50 p-10 items-center justify-center border border-muted-foreground/10',
+                  'flex-grow flex flex-col rounded-md gap-4 bg-accent/50 p-10 cursor-pointer items-center justify-center border border-muted-foreground/10',
                 )}
               >
                 <ItemComponent {...itemConfig.props} />
-              </div>
+              </Link>
             );
           },
         )}

@@ -23,9 +23,7 @@ export default function ProfileCard({
             <Image
               src={avatarUrl}
               alt={name}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-full"
+              className="rounded-full object-cover"
             />
           </div>
           <div>
@@ -35,7 +33,9 @@ export default function ProfileCard({
             <p className="text-neutral-600 dark:text-neutral-400">{role}</p>
           </div>
         </div>
-        <p className="text-neutral-700 dark:text-neutral-300 text-base">{bio}</p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-base">
+          {bio}
+        </p>
       </div>
       <div className="px-6 pt-4 pb-2">
         <button className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-full hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors">

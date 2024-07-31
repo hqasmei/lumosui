@@ -23,9 +23,8 @@ export default function ArticleCard({
         <Image
           src={imageUrl}
           alt="Coffee cup"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-md"
+          layout="fill" 
+          className="rounded-md object-cover"
         />
       </div>
       <div>

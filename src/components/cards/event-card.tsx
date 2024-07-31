@@ -20,7 +20,7 @@ export default function EventCard({
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white dark:bg-neutral-800 transition-colors duration-200">
       <div className="relative h-48 w-full">
-        <Image src={imageUrl} alt={title} layout="fill" objectFit="cover" />
+        <Image src={imageUrl} alt={title} layout="fill" className='object-cover' />
       </div>
       <div className="px-6 py-4">
         <h2 className="font-bold text-xl mb-2 text-neutral-800 dark:text-white">

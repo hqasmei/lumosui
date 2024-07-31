@@ -29,8 +29,8 @@ export default function BasicHeroSection({
             src={backgroundImage}
             alt="Background"
             fill
-            style={{ objectFit: 'cover' }}
             quality={100}
+            className="object-cover"
           />
           <div className="absolute inset-0  opacity-50"></div>
         </div>

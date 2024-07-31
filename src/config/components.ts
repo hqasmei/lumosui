@@ -13,6 +13,8 @@ import SimpleSearchBarWithButton from '@/components/search-bars/simple-search-ba
 
 export interface ComponentConfig {
   Component: React.ComponentType<any>;
+  name: string;
+  path: string;
   props: {
     [key: string]: any;
   };
@@ -21,6 +23,8 @@ export interface ComponentConfig {
 export const cardComponents: ComponentConfig[] = [
   {
     Component: ArticleCard,
+    name: 'Article Card',
+    path: 'cards/article-card',
     props: {
       title: 'How to make the perfect coffee at home',
       authorName: 'Tara Gibson',
@@ -32,6 +36,8 @@ export const cardComponents: ComponentConfig[] = [
   },
   {
     Component: ImageCard,
+    name: 'Image Card',
+    path: 'cards/image-card',
     props: {
       imageSrc:
         'https://images.unsplash.com/photo-1721390336122-c883e2b5c113?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -84,18 +90,24 @@ export const cardComponents: ComponentConfig[] = [
 export const searchBars: ComponentConfig[] = [
   {
     Component: SimpleSearchBar,
+    name: 'Simple Search Bar',
+    path: 'search-bars/simple-search-bar',
     props: {
       placeholder: 'Search...',
     },
   },
   {
     Component: BasicSearchBar,
+    name: 'Basic Search Bar',
+    path: 'search-bars/basic-search-bar',
     props: {
       placeholder: 'Search...',
     },
   },
   {
     Component: ResponsiveSearchBar,
+    name: 'Responsive Search Bar',
+    path: 'search-bars/responsive-search-bar',
     props: {
       placeholder: 'Search...',
     },
@@ -103,6 +115,8 @@ export const searchBars: ComponentConfig[] = [
 
   {
     Component: SimpleSearchBarWithButton,
+    name: 'Simple Search Bar with Button',
+    path: 'search-bars/simple-search-bar-with-button',
     props: {
       placeholder: 'Search...',
     },
@@ -112,6 +126,8 @@ export const searchBars: ComponentConfig[] = [
 export const heroComponents: ComponentConfig[] = [
   {
     Component: BasicHeroSection,
+    name: 'Basic Hero Section',
+    path: 'heros/basic-hero-section',
     props: {
       title: 'Hero',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -120,6 +136,8 @@ export const heroComponents: ComponentConfig[] = [
   },
   {
     Component: HeroGradient,
+    name: 'Hero Gradient',
+    path: 'heros/hero-gradient',
     props: {
       title: 'Hero',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
