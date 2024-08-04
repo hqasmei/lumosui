@@ -11,7 +11,7 @@ export default function MaxWidthWrapper({
 }) {
   return (
     <div
-      className={cn('mx-auto w-full md:max-w-3xl px-4', className)}
+      className={cn('mx-auto w-full md:max-w-5xl px-4', className)}
     >
       {children}
     </div>

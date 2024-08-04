@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import Header from '@/components/header';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { ComponentConfig, components } from '@/config/components';
 import { cn, makeIntoSlug } from '@/lib/utils';
@@ -22,7 +23,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   }
 
   return (
-    <MaxWidthWrapper className="py-8">
+    <MaxWidthWrapper>
       <div className="flex flex-col items-center justify-center text-center gap-2">
         <h1 className="text-2xl md:text-4xl font-bold">
           {componentData.title}

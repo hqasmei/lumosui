@@ -124,24 +124,25 @@ export default function TestingPage() {
   return (
     <div className="flex h-screen bg-background text-foreground">
       <aside className="w-64 border-r border-border overflow-auto flex flex-col">
-        <div className="p-4 flex-grow">
-          <div className="flex items-center justify-between mb-4">
+        <div className="flex-grow">
+          <div className="flex items-center justify-between border-b border-border h-[69px] p-4">
             <MainNav />
-
             <ThemeToggle />
           </div>
-          <h2 className="text-lg font-semibold mb-2">Layout Builder</h2>
-          <div className="mb-4">
-            <h3 className="font-medium mb-2">Headers</h3>
-            {renderOptions('header')}
-          </div>
-          <div className="mb-4">
-            <h3 className="font-medium mb-2">Main Content</h3>
-            {renderOptions('main')}
-          </div>
-          <div className="mb-4">
-            <h3 className="font-medium mb-2">Footers</h3>
-            {renderOptions('footer')}
+          <div className="flex flex-col p-4">
+            <h2 className="text-lg font-semibold mb-2">Layout Builder</h2>
+            <div className="mb-2">
+              <h3 className="font-medium mb-2">Headers</h3>
+              {renderOptions('header')}
+            </div>
+            <div className="mb-2">
+              <h3 className="font-medium mb-2">Main Content</h3>
+              {renderOptions('main')}
+            </div>
+            <div className="mb-2">
+              <h3 className="font-medium mb-2">Footers</h3>
+              {renderOptions('footer')}
+            </div>
           </div>
         </div>
 

@@ -33,7 +33,7 @@ export default async function ComponentPage({
   const sourceCode = await getComponentSource(componentConfig.path);
 
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper className='py-4'>
       <div className="flex flex-col gap-4">
         <BackButton />
         <div className="flex flex-col gap-4">
