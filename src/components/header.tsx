@@ -28,6 +28,11 @@ export default function Header() {
       <nav className="w-full h-16 items-center flex justify-center">
         <MaxWidthWrapper className="flex flex-row items-center justify-between">
           <MainNav />
+          <div className="flex items-center gap-4">
+            <Link href="/builder" className="text-muted-foreground">
+              Builder
+            </Link>
+          </div>
           <div className="flex items-center gap-2">
             <Link
               href={siteConfig.links.github}

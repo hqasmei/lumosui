@@ -7,6 +7,7 @@ import { ContextProvider } from '@/components/context-provider';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import { siteConfig } from '@/config/site';
+import { cn } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,9 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={cn(`${inter.className}`, 'flex flex-col h-screen')}>
         <ContextProvider>
-          <Header />
+          {/* <Header /> */}
           {children}
           {/* <Footer /> */}
         </ContextProvider>
