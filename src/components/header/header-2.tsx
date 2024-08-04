@@ -59,7 +59,7 @@ export default function Header2({ config }: { config: HeaderConfig }) {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-white">
+        <div className="md:hidden bg-background">
           <nav className="container mx-auto px-4 py-3">
             <ul className="space-y-2">
               <li>

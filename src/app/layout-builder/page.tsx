@@ -11,9 +11,11 @@ import Main1 from '@/components/main/main-1';
 import Main2 from '@/components/main/main-2';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { HeaderConfig } from '@/config/headerConfig';
+import useMediaQuery from '@/hooks/use-media-query';
 import { saveAs } from 'file-saver';
 import JSZip from 'jszip';
-import { Download } from 'lucide-react';
+import { Download, Settings, X } from 'lucide-react';
+import SideNav from '@/components/side-nav';
 
 type ComponentType = React.ComponentType<any>;
 
@@ -64,6 +66,9 @@ export default function TestingPage() {
     companyName: 'Logo',
     navItems: ['Home', 'Products', 'About', 'Contact'],
   });
+  const [activeTab, setActiveTab] = useState('layout');
+  const { isMobile } = useMediaQuery();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const renderOptions = (section: ComponentSection) => {
     return (
@@ -123,63 +128,30 @@ export default function TestingPage() {
 
   return (
     <div className="flex h-screen bg-background text-foreground">
-      <aside className="w-64 border-r border-border overflow-auto flex flex-col">
-        <div className="flex-grow">
-          <div className="flex items-center justify-between border-b border-border h-[69px] p-4">
-            <MainNav />
-            <ThemeToggle />
-          </div>
-          <div className="flex flex-col p-4">
-            <h2 className="text-lg font-semibold mb-2">Layout Builder</h2>
-            <div className="mb-2">
-              <h3 className="font-medium mb-2">Headers</h3>
-              {renderOptions('header')}
-            </div>
-            <div className="mb-2">
-              <h3 className="font-medium mb-2">Main Content</h3>
-              {renderOptions('main')}
-            </div>
-            <div className="mb-2">
-              <h3 className="font-medium mb-2">Footers</h3>
-              {renderOptions('footer')}
-            </div>
-          </div>
-        </div>
-
-        <div className="p-4 border-t border-border">
-          <h3 className="font-medium mb-2">Customize</h3>
-          {selectedComponents.header && (
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
-                Company Name
-              </label>
-              <input
-                type="text"
-                value={headerConfig.companyName}
-                onChange={(e) => {
-                  setHeaderConfig((prev) => ({
-                    ...prev,
-                    companyName: e.target.value,
-                  }));
-                }}
-                className="w-full px-2 py-1 border border-input rounded focus:outline-none focus:ring-2 focus:ring-ring bg-background"
-              />
-            </div>
-          )}
-        </div>
-      </aside>
+       <SideNav 
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        renderOptions={renderOptions}
+        selectedComponents={selectedComponents}
+        headerConfig={headerConfig}
+        setHeaderConfig={setHeaderConfig}
+      />
       <main className="flex-1 overflow-auto">
-        <div>
-          <div className="flex justify-between items-center mb-4 m-4">
-            <h2 className="text-xl font-semibold">Preview</h2>
-            <button
-              onClick={exportComponent}
-              className="px-3 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition duration-300 flex items-center gap-2 text-sm"
-            >
-              <Download size={16} /> Export
-            </button>
+        <div className="relative">
+          <div className="sticky top-0 z-10 bg-background">
+            <div className="flex items-center justify-between border-b border-border h-[69px] p-4">
+              <h2 className="text-xl font-semibold">Preview</h2>
+              <div className="flex gap-2 items-center">
+                <button
+                  onClick={exportComponent}
+                  className="px-3 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition duration-300 flex items-center gap-2 text-sm"
+                >
+                  <Download size={16} /> Export
+                </button>
+                <ThemeToggle className="h-10 w-10" />
+              </div>
+            </div>
           </div>
-          <div className="h-px bg-border my-2"></div>
           <div className="border border-border rounded-lg overflow-hidden m-4">
             {renderPreview()}
           </div>

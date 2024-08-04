@@ -2,10 +2,17 @@
 
 import React, { useEffect, useState } from 'react';
 
+import { cn } from '@/lib/utils';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-export function ThemeToggle({ isDropDown = false }: { isDropDown?: boolean }) {
+export function ThemeToggle({
+  isDropDown = false,
+  className,
+}: {
+  isDropDown?: boolean;
+  className?: string;
+}) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -24,7 +31,10 @@ export function ThemeToggle({ isDropDown = false }: { isDropDown?: boolean }) {
   return (
     <button
       onClick={toggleTheme}
-      className="p-1 w-7 h-7 rounded-md hover:bg-accent transition-colors duration-200"
+      className={cn(
+        'p-1 w-7 h-7 rounded-md hover:bg-accent transition-colors duration-200 flex items-center justify-center',
+        className,
+      )}
     >
       {theme === 'light' ? (
         <Moon size={20} className="stroke-muted-foreground" />
