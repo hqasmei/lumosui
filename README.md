@@ -1,4 +1,5 @@
-![Cover](https://github.com/user-attachments/assets/97fc2d5b-b9bd-431a-aecd-e455221ff693)
+ ![Cover](https://github.com/user-attachments/assets/83720dca-ec57-4bd6-b375-1127d1e8e727)
+
 
 Illuminate your web projects with elegant, modern React UI components powered by Tailwind CSS.
 
