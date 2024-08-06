@@ -1,9 +1,7 @@
-import fs from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 
-export async function getComponentSource(
-  componentPath: string,
-): Promise<string> {
+export async function getComponentSource(componentPath: string): Promise<string> {
   const fullPath = path.join(
     process.cwd(),
     'src',
@@ -11,7 +9,7 @@ export async function getComponentSource(
     `${componentPath}.tsx`,
   );
   try {
-    const source = await fs.readFile(fullPath, 'utf-8');
+    const source = await fs.promises.readFile(fullPath, 'utf-8');
     return source;
   } catch (error) {
     console.error(`Error reading file ${fullPath}:`, error);
