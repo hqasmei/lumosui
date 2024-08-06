@@ -2,20 +2,20 @@
 
 import React, { useState } from 'react';
 
+import FontWrapper from '@/components/font-wrapper';
 import Footer1 from '@/components/footer/footer-1';
 import Footer2 from '@/components/footer/footer-2';
 import Header1 from '@/components/header/header-1';
 import Header2 from '@/components/header/header-2';
-import MainNav from '@/components/main-nav';
-import Main1 from '@/components/main/main-1';
-import Main2 from '@/components/main/main-2';
+import { Main1 } from '@/components/main/main-1';
+import { Main2 } from '@/components/main/main-2';
+import SideNav from '@/components/side-nav';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { HeaderConfig } from '@/config/headerConfig';
-import useMediaQuery from '@/hooks/use-media-query';
+import { defaultHeader2Config, HeaderConfig } from '@/config/headerConfig';
+import { fontOptions } from '@/fonts';
 import { saveAs } from 'file-saver';
 import JSZip from 'jszip';
-import { Download, Settings, X } from 'lucide-react';
-import SideNav from '@/components/side-nav';
+import { Download } from 'lucide-react';
 
 type ComponentType = React.ComponentType<any>;
 
@@ -62,13 +62,11 @@ export default function TestingPage() {
   );
 
   // Single headerConfig state
-  const [headerConfig, setHeaderConfig] = useState<HeaderConfig>({
-    companyName: 'Logo',
-    navItems: ['Home', 'Products', 'About', 'Contact'],
-  });
+  const [headerConfig, setHeaderConfig] =
+    useState<HeaderConfig>(defaultHeader2Config);
   const [activeTab, setActiveTab] = useState('layout');
-  const { isMobile } = useMediaQuery();
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [selectedFont, setSelectedFont] =
+    useState<keyof typeof fontOptions>('inter');
 
   const renderOptions = (section: ComponentSection) => {
     return (
@@ -102,13 +100,28 @@ export default function TestingPage() {
 
     return (
       <>
-        <HeaderComponent config={headerConfig} />
-        <MainComponent />
-        <FooterComponent />
+        <FontWrapper
+          component={HeaderComponent}
+          font={selectedFont}
+          props={{ config: headerConfig }}
+        />
+        <FontWrapper
+          component={MainComponent}
+          font={selectedFont}
+          props={{
+            backgroundColor: headerConfig.backgroundColor,
+            backgroundStyle: headerConfig.backgroundStyle,
+            backgroundComponent: headerConfig.backgroundComponent,
+          }}
+        />
+        <FontWrapper
+          component={FooterComponent}
+          font={selectedFont}
+          props={{}}
+        />
       </>
     );
   };
-
   const exportComponent = async () => {
     const zip = new JSZip();
 
@@ -128,13 +141,15 @@ export default function TestingPage() {
 
   return (
     <div className="flex h-screen bg-background text-foreground">
-       <SideNav 
+      <SideNav
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         renderOptions={renderOptions}
         selectedComponents={selectedComponents}
         headerConfig={headerConfig}
         setHeaderConfig={setHeaderConfig}
+        selectedFont={selectedFont}
+        setSelectedFont={setSelectedFont}
       />
       <main className="flex-1 overflow-auto">
         <div className="relative">

@@ -1,36 +1,49 @@
 import React from 'react';
 
-export default function Main2() {
+export const Main2 = ({
+  backgroundColor = 'bg-blue-500',
+  backgroundStyle,
+  backgroundComponent: BackgroundComponent,
+}: {
+  backgroundColor?: string;
+  backgroundStyle?: any;
+  backgroundComponent?: any;
+}) => {
   return (
-    <main className="bg-gradient-to-b from-purple-600 to-indigo-700 text-white">
-      <div className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
-            Revolutionize Your Workflow
-          </h1>
-          <p className="text-xl md:text-2xl mb-8">
-            Streamline your processes and achieve more with our cutting-edge
-            tools.
-          </p>
-          <div className="flex justify-center space-x-4">
-            <button className="bg-white text-purple-700 font-bold py-3 px-8 rounded-full hover:bg-purple-100 transition duration-300">
-              Try it Free
-            </button>
-            <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-purple-700 transition duration-300">
-              Learn More
-            </button>
+    <main
+      className={`${backgroundColor.startsWith('bg-') ? backgroundColor : ''} text-white relative`}
+      style={backgroundStyle}
+    >
+      {BackgroundComponent && <BackgroundComponent />}
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2  p-8 rounded-lg">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Welcome to Our Platform
+            </h1>
+            <p className="text-xl mb-6">
+              Discover amazing features and boost your productivity.
+            </p>
+            <div className="flex space-x-4">
+              <button className="bg-white text-blue-700 font-bold py-2 px-6 rounded-full hover:bg-blue-100 transition duration-300">
+                Get Started
+              </button>
+              <button className="bg-gray-700 text-white font-bold py-2 px-6 rounded-full hover:bg-gray-600 transition duration-300">
+                Customize
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg p-4 shadow-2xl">
-            <div className="bg-gray-200 h-80 rounded flex items-center justify-center">
-              <span className="text-gray-500 text-lg">
-                Product Screenshot Placeholder
-              </span>
+          <div className="md:w-1/2 mt-8 md:mt-0 md:ml-8 z-10">
+            <div className="bg-white rounded-lg p-4 shadow-lg">
+              <div className="bg-gray-200 h-64 rounded flex items-center justify-center">
+                <span className="text-gray-500 text-lg">
+                  Hero Image Placeholder
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </main>
   );
-}
+};

@@ -1,7 +1,10 @@
-"use client";
+'use client';
+
 import React, { useState } from 'react';
 
+import ColorSelector from '@/components/color-selector';
 import MainNav from '@/components/main-nav';
+import { fontOptions } from '@/fonts';
 import useMediaQuery from '@/hooks/use-media-query';
 import { Settings, X } from 'lucide-react';
 
@@ -14,10 +17,12 @@ export default function SideNav({
   selectedComponents,
   headerConfig,
   setHeaderConfig,
+  selectedFont,
+  setSelectedFont,
 }: {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  renderOptions: (section: ComponentSection) => JSX.Element; // Changed from string to ComponentSection
+  renderOptions: (section: ComponentSection) => JSX.Element;
   selectedComponents: {
     header: string | null;
     main: string | null;
@@ -25,6 +30,8 @@ export default function SideNav({
   };
   headerConfig: any;
   setHeaderConfig: (config: any) => void;
+  selectedFont: keyof typeof fontOptions;
+  setSelectedFont: (font: keyof typeof fontOptions) => void;
 }) {
   const { isMobile } = useMediaQuery();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -95,6 +102,29 @@ export default function SideNav({
                 />
               </div>
             )}
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">Font</label>
+              <select
+                value={selectedFont}
+                onChange={(e) =>
+                  setSelectedFont(e.target.value as keyof typeof fontOptions)
+                }
+                className="w-full px-2 py-1 border border-border rounded focus:outline-none focus:ring-accent focus:ring-1 bg-background capitalize"
+              >
+                {Object.keys(fontOptions).map((font) => (
+                  <option key={font} value={font} className="capitalize">
+                    {font}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mb-4">
+              <ColorSelector
+                headerConfig={headerConfig}
+                setHeaderConfig={setHeaderConfig}
+              />
+            </div>
           </div>
         )}
       </div>

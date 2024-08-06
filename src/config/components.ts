@@ -10,6 +10,7 @@ import BasicSearchBar from '@/components/search-bars/basic-search-bar';
 import ResponsiveSearchBar from '@/components/search-bars/responsive-search-bar';
 import SimpleSearchBar from '@/components/search-bars/simple-search-bar';
 import SimpleSearchBarWithButton from '@/components/search-bars/simple-search-bar-with-button';
+import { fontOptions } from '@/fonts';
 
 export interface ComponentConfig {
   Component: React.ComponentType<any>;
@@ -18,6 +19,7 @@ export interface ComponentConfig {
   props: {
     [key: string]: any;
   };
+  font?: keyof typeof fontOptions;
 }
 
 export const cardComponents: ComponentConfig[] = [
